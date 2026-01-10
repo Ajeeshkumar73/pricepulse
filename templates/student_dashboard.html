@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-wallet"></i> Wallet Balance</h5>
+            </div>
+            <div class="card-body text-center">
+                <h2 class="text-success">₹{{ wallet.balance if wallet else 0 }}</h2>
+                <a href="{{ url_for('load_money') }}" class="btn btn-primary">Load Money</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-history"></i> Recent Transactions</h5>
+            </div>
+            <div class="card-body">
+                {% if transactions %}
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for transaction in transactions %}
+                                <tr>
+                                    <td>{{ transaction.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                                    <td>{{ transaction.transaction_type }}</td>
+                                    <td>₹{{ transaction.amount }}</td>
+                                    <td><span class="badge bg-success">{{ transaction.status }}</span></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-muted">No transactions yet.</p>
+                {% endif %}
+                <a href="{{ url_for('transactions') }}" class="btn btn-outline-primary">View All</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5><i class="fas fa-qrcode"></i> Scan & Pay</h5>
+                <p>Scan QR codes to make payments</p>
+                <a href="{{ url_for('scan_payment') }}" class="btn btn-success">Scan QR Code</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5><i class="fas fa-list"></i> Transaction History</h5>
+                <p>View all your transactions</p>
+                <a href="{{ url_for('transactions') }}" class="btn btn-info">View History</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

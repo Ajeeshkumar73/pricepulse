@@ -1,0 +1,9 @@
+Flask
+Flask-Login
+Flask-Cors
+Flask-PyMongo
+pymongo
+Werkzeug
+qrcode
+Pillow
+pyzbar

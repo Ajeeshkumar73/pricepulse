@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="jumbotron bg-light p-5 rounded">
+            <h1 class="display-4">Welcome to Campus Wallet</h1>
+            <p class="lead">Your digital payment solution for campus services</p>
+            <hr class="my-4">
+            <p>Load money, pay vendors, and track your expenses all in one place.</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <i class="fas fa-wallet fa-3x text-primary mb-3"></i>
+                            <h5 class="card-title">Digital Wallet</h5>
+                            <p class="card-text">Secure and convenient digital payments</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <i class="fas fa-qrcode fa-3x text-success mb-3"></i>
+                            <h5 class="card-title">QR Code Payments</h5>
+                            <p class="card-text">Fast payments using QR code scanning</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <i class="fas fa-chart-line fa-3x text-info mb-3"></i>
+                            <h5 class="card-title">Transaction History</h5>
+                            <p class="card-text">Track all your payments and transactions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4">
+                <a class="btn btn-primary btn-lg" href="{{ url_for('register') }}" role="button">Get Started</a>
+                <a class="btn btn-outline-primary btn-lg" href="{{ url_for('login') }}" role="button">Login</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
